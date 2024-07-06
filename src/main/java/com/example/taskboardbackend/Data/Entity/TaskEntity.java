@@ -31,6 +31,10 @@ public class TaskEntity {
     private boolean isCompleted;
     private boolean isProtected;
     private LocalDateTime createdAt;
-    @OneToMany
+    @ManyToMany
+    @JoinTable(
+            name = "UserTaskParticipation",
+            joinColumns = @JoinColumn(name = "task_id"),
+            inverseJoinColumns = @JoinColumn(name = "desk_access_id"))
     private Set<UserDeskAccessEntity> userDeskAccesses;
 }
