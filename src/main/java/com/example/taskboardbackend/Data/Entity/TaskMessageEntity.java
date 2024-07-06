@@ -23,6 +23,6 @@ public class TaskMessageEntity {
     private TaskEntity taskId;
     private String text;
     @Lob
-    private byte[] file;
+    private byte[] file; //TODO: replace with S3
     private LocalDateTime createdAt;
 }
