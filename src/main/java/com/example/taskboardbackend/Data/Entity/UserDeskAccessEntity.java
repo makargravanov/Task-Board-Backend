@@ -20,6 +20,4 @@ public class UserDeskAccessEntity {
     @ManyToOne
     private UserSpaceAccessEntity spaceAccessId;
     private int accessLevel;
-    @ManyToMany(mappedBy = "userDeskAccesses")
-    private Set<TaskEntity> tasks;
 }
