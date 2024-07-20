@@ -1,4 +1,4 @@
-package com.example.taskboardbackend.DTO;
+package com.example.taskboardbackend.GlobalData;
 /**
  * Тут пишем Data Transfer Objects, их следует использовать везде, кроме Service. Используем Record.
  * То есть: Приняли Entity в ServiceDB из метода репозитория -> Преобразовали Entity в DTO -> Передали DTO в логику ->

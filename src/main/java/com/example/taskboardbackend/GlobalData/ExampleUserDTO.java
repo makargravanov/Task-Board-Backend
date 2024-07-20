@@ -1,14 +1,14 @@
-package com.example.taskboardbackend.DTO;
+package com.example.taskboardbackend.GlobalData;
 
 /**
  * Это пример создания immutable DTO при помощи Record.
  * Убраны поля:
- *  String email
- *  String password,
+ * String email
+ * String password,
  * как поля, содержащие, допустим, личную информацию.
  * Также, убраны поля:
- *  LocalDateTime createdAt
- *  boolean gender,
+ * LocalDateTime createdAt
+ * boolean gender,
  * так как данные поля, по какой-либо причине, мы посчитали излишними, в конкретном случае.
  */
 

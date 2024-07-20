@@ -1,0 +1,66 @@
+package com.example.taskboardbackend.GlobalData;
+
+import org.springframework.beans.factory.annotation.Value;
+
+import java.math.BigInteger;
+import java.security.SecureRandom;
+import java.time.LocalDateTime;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
+public class ConcurrentJWTKeys {
+    private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+    private final Lock writeLock = lock.writeLock();
+    private final Lock readLock = lock.readLock();
+    private ConcurrentPair<String, LocalDateTime> oldKey = new ConcurrentPair<>();
+    private ConcurrentPair<String, LocalDateTime> actualKey = new ConcurrentPair<>();
+    @Value("${jwt.lifetime}")
+    private Integer jwtLifetime;
+
+    public ConcurrentJWTKeys() {
+        ConcurrentPair<String, LocalDateTime> old = new ConcurrentPair<>(gen(), LocalDateTime.now().plusMinutes(jwtLifetime));
+        ConcurrentPair<String, LocalDateTime> actual = new ConcurrentPair<>(gen(), LocalDateTime.now());
+        this.oldKey = old;
+        this.actualKey = actual;
+    }
+
+    private String gen() {
+        byte[] bytes = new byte[32];
+        new SecureRandom().nextBytes(bytes);
+        return new BigInteger(1, bytes).toString(16);
+    }
+
+    public void refreshKeys() {
+        writeLock.lock();
+        try {
+            oldKey.setPair(actualKey.getKey(), LocalDateTime.now().plusMinutes(jwtLifetime));
+            actualKey.setPair(gen(), LocalDateTime.now());
+        } finally {
+            writeLock.unlock();
+        }
+    }
+
+    public String getKeyForCreateNewToken() {
+        readLock.lock();
+        try {
+            return actualKey.getKey();
+        } finally {
+            readLock.unlock();
+        }
+    }
+
+    public String getKeyForCheckToken(LocalDateTime tokenExpiresAt) {
+        readLock.lock();
+        try {
+            LocalDateTime oldTime = oldKey.getValue();
+            if (tokenExpiresAt.isAfter(oldTime)) {
+                return actualKey.getKey();
+            } else {
+                return oldKey.getKey();
+            }
+        } finally {
+            readLock.unlock();
+        }
+    }
+
+}

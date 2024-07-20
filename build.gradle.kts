@@ -31,6 +31,7 @@ dependencies {
     implementation("org.springframework.modulith:spring-modulith-bom:1.0.0")
     implementation("org.springframework.modulith:spring-modulith-docs:1.0.0")
     implementation("javax.servlet:javax.servlet-api:4.0.1")
+    implementation ("com.auth0:java-jwt:4.2.1")
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("com.mysql:mysql-connector-j")
     //developmentOnly("org.springframework.boot:spring-boot-docker-compose")

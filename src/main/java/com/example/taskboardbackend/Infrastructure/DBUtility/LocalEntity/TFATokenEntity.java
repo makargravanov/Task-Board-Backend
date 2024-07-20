@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name ="2FATokens")
+@Table(name = "2FATokens")
 public class TFATokenEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

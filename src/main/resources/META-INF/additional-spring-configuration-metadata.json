@@ -1,26 +1,9 @@
 {
   "properties": [
     {
-      "name": "jwt_old_key",
-      "defaultValue": "JWT_OLD_KEY",
-      "type": "java.lang.String",
-      "description": "Description for jwt_old_key."
-    },
-    {
-      "name": "jwt_actual_key",
-      "defaultValue": "JWT_ACTUAL_KEY",
-      "type": "java.lang.String",
-      "description": "Description for jwt_actual_key."
-    },
-    {
-      "name": "jwt_old_key_close_time",
-      "type": "java.time.LocalDateTime",
-      "description": "Description for jwt_old_key_close_time."
-    },
-    {
-      "name": "jwt_actual_key_open_time",
-      "type": "java.lang.String",
-      "description": "Description for jwt_actual_key_open_time."
-    }
-  ]
-}
+      "name": "jwt.lifetime",
+      "type": "java.lang.Integer",
+      "defaultValue": 30,
+      "description": "Description for jwt.lifetime."
+  }
+] }

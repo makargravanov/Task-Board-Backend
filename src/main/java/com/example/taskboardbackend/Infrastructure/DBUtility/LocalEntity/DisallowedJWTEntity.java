@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name ="disallowed_jwt")
+@Table(name = "disallowed_jwt")
 public class DisallowedJWTEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

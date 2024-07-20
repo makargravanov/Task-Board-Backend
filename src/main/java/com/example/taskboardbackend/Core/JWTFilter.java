@@ -1,17 +1,13 @@
 package com.example.taskboardbackend.Core;
-import com.example.taskboardbackend.Core.Domain.CustomJWT.JWTValidator;
 
-import jakarta.servlet.Filter;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.FilterConfig;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
+import com.example.taskboardbackend.Core.Domain.CustomJWT.JWTValidator;
+import jakarta.servlet.*;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+
 public class JWTFilter implements Filter {
     private final JWTValidator jwtValidator;
 

@@ -1,4 +1,4 @@
-package com.example.taskboardbackend.DTO;
+package com.example.taskboardbackend.GlobalData;
 
 public record LoginUserDTO(String email, String password) {
 }
