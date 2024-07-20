@@ -40,7 +40,16 @@ public class ConcurrentJWTKeys {
         }
     }
 
-    public String getKeyForCreateNewToken() {
+    public String getOldKey(){
+        readLock.lock();
+        try {
+            return oldKey.getKey();
+        } finally {
+            readLock.unlock();
+        }
+    }
+
+    public String getActualKey() {
         readLock.lock();
         try {
             return actualKey.getKey();
@@ -49,15 +58,19 @@ public class ConcurrentJWTKeys {
         }
     }
 
-    public String getKeyForCheckToken(LocalDateTime tokenExpiresAt) {
+    public LocalDateTime getTimeOfActual() {
         readLock.lock();
         try {
-            LocalDateTime oldTime = oldKey.getValue();
-            if (tokenExpiresAt.isAfter(oldTime)) {
-                return actualKey.getKey();
-            } else {
-                return oldKey.getKey();
-            }
+            return actualKey.getValue();
+        } finally {
+            readLock.unlock();
+        }
+    }
+
+    public LocalDateTime getTimeOfOld() {
+        readLock.lock();
+        try {
+            return oldKey.getValue();
         } finally {
             readLock.unlock();
         }

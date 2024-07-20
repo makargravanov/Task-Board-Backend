@@ -24,10 +24,9 @@ public class JWTGenerator {
         Instant exp = now.plus(jwtLifetime, ChronoUnit.MINUTES);
 
         return JWT.create()
-                .withIssuer("userService")
                 .withSubject(userId.toString())
                 .withIssuedAt(Date.from(now))
                 .withExpiresAt(Date.from(exp))
-                .sign(Algorithm.HMAC256(jwtKeys.getKeyForCreateNewToken()));
+                .sign(Algorithm.HMAC256(jwtKeys.getActualKey()));
     }
 }
