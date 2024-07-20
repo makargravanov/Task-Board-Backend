@@ -15,8 +15,6 @@ import java.time.ZoneId;
 @Service
 public class JWTValidator {
     private final ConcurrentJWTKeys jwtKeys;
-    @Value("${jwt.lifetime}")
-    private Integer jwtLifetime;
 
     public JWTValidator(ConcurrentJWTKeys jwtKeys) {
         this.jwtKeys = jwtKeys;
