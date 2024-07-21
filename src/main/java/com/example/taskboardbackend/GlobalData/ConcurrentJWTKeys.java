@@ -14,10 +14,10 @@ public class ConcurrentJWTKeys {
     private final Lock readLock = lock.readLock();
     private ConcurrentPair<String, LocalDateTime> oldKey = new ConcurrentPair<>();
     private ConcurrentPair<String, LocalDateTime> actualKey = new ConcurrentPair<>();
-    @Value("${jwt.lifetime}")
-    private Integer jwtLifetime;
+    private final Integer jwtLifetime;
 
-    public ConcurrentJWTKeys() {
+    public ConcurrentJWTKeys(Integer jwtLifetime) {
+        this.jwtLifetime = jwtLifetime;
         ConcurrentPair<String, LocalDateTime> old = new ConcurrentPair<>(gen(), LocalDateTime.now().plusMinutes(jwtLifetime));
         ConcurrentPair<String, LocalDateTime> actual = new ConcurrentPair<>(gen(), LocalDateTime.now());
         this.oldKey = old;
@@ -40,7 +40,7 @@ public class ConcurrentJWTKeys {
         }
     }
 
-    public String getOldKey(){
+    public String getOldKey() {
         readLock.lock();
         try {
             return oldKey.getKey();

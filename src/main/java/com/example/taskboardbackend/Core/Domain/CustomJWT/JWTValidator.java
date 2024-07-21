@@ -59,7 +59,7 @@ public class JWTValidator {
         return internal(token) != null;
     }
 
-    public Long getIdFromToken(String token){
+    public Long getIdFromToken(String token) throws NullPointerException{
         Long l = internal(token);
         if(l==null){
             throw new NullPointerException("Invalid token with no Id");
