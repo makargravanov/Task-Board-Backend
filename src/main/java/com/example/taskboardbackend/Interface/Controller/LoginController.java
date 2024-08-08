@@ -1,6 +1,7 @@
 package com.example.taskboardbackend.Interface.Controller;
 import com.example.taskboardbackend.Core.CorePort;
 import com.example.taskboardbackend.GlobalData.LoginUserDTO;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,9 +16,8 @@ public class LoginController {
         this.corePort = corePort;
     }
 
-//    @PostMapping("")
-//    public ResponseEntity<?> login(@RequestBody LoginUserDTO userDTO) {
-//        return "login";
-//        //TODO
-//    }
+    @PostMapping("")
+    public ResponseEntity<?> login(@RequestBody LoginUserDTO userDTO, HttpServletRequest request) {
+        return corePort.
+    }
 }

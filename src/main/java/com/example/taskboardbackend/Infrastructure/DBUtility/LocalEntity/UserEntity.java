@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Array;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -21,12 +23,15 @@ public class UserEntity {
     private String firstName;
     private String middleName;
     private String lastName;
-    private boolean gender;
+    private boolean gender;//0-w,1-m
     private String email;
     private String password;
     private int accessLevel;
     private int grade;
+    private int group;
+    private boolean isEmailVerified;
+    private boolean isTwoFactorAuth;
     private LocalDateTime createdAt;
-    @Lob
-    private byte[] image;
+    @OneToMany
+    private Set<FileIdEntity> imageIdSet;
 }

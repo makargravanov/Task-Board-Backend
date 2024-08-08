@@ -6,25 +6,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-import java.util.Set;
-
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "TaskMessages")
-public class TaskMessageEntity {
+@Table(name = "file_ids")
+public class FileIdEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
-    private UserDeskAccessEntity senderDeskAccess;
-    @ManyToOne
-    private TaskEntity task;
-    private String text;
-    @OneToMany
-    private Set<FileIdEntity> fileIdSet;
-    private LocalDateTime createdAt;
+    @OneToOne
+    private FileEntity fileId;
 }
