@@ -27,6 +27,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-mail:3.1.3")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf:3.1.3")
     implementation("org.springframework.modulith:spring-modulith-test:1.0.0")
     implementation("org.springframework.modulith:spring-modulith-api:1.0.0")
     implementation("org.springframework.modulith:spring-modulith-bom:1.0.0")

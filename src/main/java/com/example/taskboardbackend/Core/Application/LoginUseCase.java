@@ -44,7 +44,7 @@ public class LoginUseCase {
     }
 
     private String produceJwtCookie(Long userId){
-        return ResponseCookie.from("jwtToken")
+        return ResponseCookie.from("jwt")
                 .value(generator.generate(userId))
                 .httpOnly(true)
                 .build()
